@@ -1,0 +1,25 @@
+/*2.	Вывести на экран изображение домика из букв:
+   A
+  AMA
+ AMMMA
+AMMMMMA
+ MMMMM
+ ЖЖ ЖЖ
+ MMMMM
+*/
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	cout << setw(4) << "А"<<'\n'
+		<< setw(5) << "АМА" << '\n'
+		<< setw(6) << "АМММА" << '\n'
+		<<setw(7) << "АМММММА" << '\n'
+		<< setw(6) << "МММММ" << '\n'
+		<< setw(5) << " ЖЖ ЖЖ" << '\n'
+		<< setw(6) << "МММММ" << '\n';
+	cin.get();
+	return 0;
+}
