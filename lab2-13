@@ -1,0 +1,43 @@
+//Задание 13.	Напишите программу, которая вводит координаты вершин треугольника и определяет его площадь
+
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int x1, y1, x2, y2, x3, y3, x4, y4;
+
+	float dlinaa, dlinab, dlinac, Streug, polp;
+
+	cout << "Введите координаты трёх вершин"<<endl;
+	cout << "Координаты для первой вершины:\n";
+	cin >> x1 >> y1;
+	
+	cout << "Координаты для второй вершины:\n";
+	cin >> x2 >> y2;
+	
+	cout << "Координаты для третьей вершины:\n"; 
+	cin >> x3 >> y3;
+	
+	
+	dlinaa = sqrt (pow((x3 - x2), 2) + pow((y3 - y2), 2));
+	dlinab = sqrt (pow((x2 - x1),2) + pow ((y2 - y1),2));
+	dlinac = sqrt(pow((x3 - x1), 2) + pow((y3 - y1), 2));
+	polp = ( dlinaa +	dlinab+ dlinac )/2;					//полупериметр
+	Streug = sqrt(polp * (polp - dlinaa) * (polp - dlinab) * (polp - dlinac));
+
+	cout << "Расчет:\n длины сторон равны:\n" << dlinaa << endl;
+	cout << dlinab << endl;
+	cout << dlinac << endl;
+	cout << "Полупериметр расчитанный по формуле равен: =(" << dlinaa << " + " << dlinab << " + " << dlinac << " )/2 = " << polp << endl;
+
+	cout << "Площадь треугольника расчитанный по формуле равен: =квадратный корень из("<< polp <<" * "<< "("<<polp<<" -"<< dlinaa <<") * (" <<polp<<" -"<< dlinab<<") * ("<<polp<<" - "<<dlinac<<") =" << Streug << endl;
+
+	return 0;
+}
