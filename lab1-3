@@ -1,0 +1,25 @@
+/*3.	Вывести на экран изображение двух домиков:
+   A       A 
+  AMA     AMA
+ AMMMA   AMMMA
+AMMMMMA AMMMMMA
+ MMMMM   MMMMM
+ ЖЖ ЖЖ   ЖЖ ЖЖ
+ MMMMM   MMMMM
+*/
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	cout << setw(4) << "А"<<setw(8) << "А\n"
+		<< setw(5) << "АМА" << setw(8) << "АМА\n"
+		<< setw(6) << "АМММА" << setw(8) << "АМММА\n"
+		<<setw(7) << "АМММММА" << setw(8) << "АМММММА\n"
+		<< setw(6) << "МММММ" << setw(8) << "МММММ\n"
+		<< setw(5) << " ЖЖ ЖЖ" << setw(8) << " ЖЖ ЖЖ\n"
+		<< setw(6) << "МММММ" << setw(8) << "МММММ\n";
+	cin.get();
+	return 0;
+}
