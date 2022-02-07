@@ -1,0 +1,25 @@
+//Задание 15.	На складе хранятся апельсины. Каждый день их масса за счёт испарения воды уменьшается на 1%. Напишите программу, которая вводит начальную массу апельсинов и определяет оставшуюся массу через 30 дней хранения на складе 
+
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	float massaapel;
+
+	cout << "Введите массу апельсинов";
+
+	cin >> massaapel;
+
+	massaapel = massaapel * (pow((1 - 0.01), 30));
+
+	cout << "Масса апельсинов через 30 дней составит " << massaapel << endl;
+
+	return 0;
+}
