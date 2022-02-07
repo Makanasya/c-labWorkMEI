@@ -1,0 +1,28 @@
+//4.	Напишите программу, которая меняет местами значение двух переменных в памяти
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main()
+{
+	setlocale(LC_ALL, "Rus");
+	
+	int a, b, c; 
+		
+	cout<<"Введите два числа А и В\n";
+	cin>>a>>b;
+	
+	cout<<"До перестановки числа равны"<<endl;
+	cout<<"Число А="<<a<<endl;
+	cout<<"Число B="<<b<<endl;
+	
+	cout<<"После перестановки числа равны"<<endl;
+	c=a;
+	a=b;
+	b=c;
+	cout<<"Число А="<<a<<endl;
+	cout<<"Число B="<<b<<endl;
+	
+	cin.get();
+	cin.get();
+	
+}
