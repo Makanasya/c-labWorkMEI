@@ -1,0 +1,16 @@
+/*1.	Вывести на экран фразу лесенкой:
+Студент,
+    давайте
+         зачётку
+*/
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main()
+{
+	setlocale(LC_ALL, "Rus");
+	cout<<setw(7)<<"Студент,\n"
+    <<setw(11)<<"давайте\n"
+    <<setw(16)<<"зачётку\n";
+	cin.get();
+}
