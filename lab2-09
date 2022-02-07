@@ -1,0 +1,26 @@
+//Задание 9	Напишите программу, которая возводит введённое число в степень 10, используя только 4 операции умножения
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	double x, kvadratx, kvadrokadratx, result;
+	
+	cout << "Введите число X=";
+	cin >> x;
+
+	kvadratx = x * x;
+	kvadrokadratx= kvadratx * kvadratx;
+	result = kvadrokadratx * kvadrokadratx * kvadratx;
+		
+	cout<<fixed << "\nX в степени 10= " << result << endl;
+
+	return 0;
+}
+
