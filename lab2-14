@@ -1,0 +1,32 @@
+//Задание 14.	Напишите программу, которая вводит радиус круга и вычисляет его площадь и длину окружности. Использовать константу M_PI(из математической библиотеки).  
+
+#include <iostream>
+#include <cmath>
+#ifndef M_PI
+#define M_PI (3.14159265358979323846)
+#endif
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int r;
+	
+	double Skrug, Cokr;
+
+	cout << "Введите радиус\n";
+
+	cin >> r;
+
+	Skrug = M_PI * pow(r, 2);
+	Cokr = 2 * M_PI * r;
+
+	cout << "Площадь круга равна " << Skrug << endl;
+	cout << "Длина окружности равна " << Cokr << endl;
+
+	return 0;
+}
