@@ -1,0 +1,21 @@
+//Лабораторная работа 1. 
+/*Задание 4.	Вывести значения целых переменных а = 4 и b = 2 в формате :
+А) 2 + 4 = ?
+Б) Z(4) = F(2)
+В) а = 4; b = 2;
+Г) Ответ: (4; 2)
+*/
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int a = 4,	b=2;
+	cout << b << " + " << a << " = ?" << endl;		
+	cout << "Z(" << a << ") = F(" << b << ")"<< endl;		
+	cout << "a=" << a << "; b = " << b << ";" << endl;		
+	cout << "Ответ: ("  << a << "; " << b << ")" << endl;		
+	cin.get();
+	return 0;
+}
