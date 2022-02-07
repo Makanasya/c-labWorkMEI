@@ -1,0 +1,33 @@
+//2. Ввести с клавиатуры координаты двух точек (A и B) на плоскости (вещественные числа). Вычислить длину отрезка AB
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main()
+{
+	setlocale(LC_ALL, "Rus");
+	
+	float xa=0, ya=0, xb=0, yb=0; 
+	float dlina; 
+	
+	
+	cout<<"Введите координаты двух точек:\nкоррдината точки А\n";
+	cin>>xa>>xb;
+	
+	cout<<"\nкоордината точки B\n";
+	cin>>ya>>yb;
+	
+	dlina=(xb-xa)*(xb-xa)+(yb-ya)*(yb-ya);
+
+	cout<<"\tДлина отрезка АВ ="<<dlina<<endl;
+	//summa=x+y+z;
+	//proizv=x*y*z;
+	//srarif=(x+y+z)/3;
+    
+	/*cout<<"\tСумма чисел ="<<summa<<endl	
+		<<"\tПроизведение ="<<proizv<<endl		
+		<<"\tСреднее арифметическое ="<<srarif;
+*/
+	cin.get();
+	cin.get();
+	
+}
