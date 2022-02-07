@@ -1,0 +1,22 @@
+//3. Получить случайное трехзначное число и вывести через запятую его отдельные цифры. (сотни, десятки, единицы)
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main()
+{
+	setlocale(LC_ALL, "Rus");
+	
+	int a; 
+		
+	cout<<"Введите трехзначное число а\n";
+	cin>>a;
+	
+	
+	cout<<a/100<<','
+		<<a/10%10<<','
+		<<a%10<<endl;
+	
+	cin.get();
+	cin.get();
+	
+}
