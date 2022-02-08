@@ -1,0 +1,51 @@
+/*Задача 2. Напишите функцию, которая вычисляет сразу максимальное и минимальное из трёх чисел. (Используйте изменяемые параметры.)
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+int Sravnenie(int, int, int, int&, int&);			//прототип функции с передачей по ссылке
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a, b, c;
+	a = 0;
+	
+	cout << "Введите три числа" << endl;
+	cin >> a >> b >> c;
+
+	int maxim = a;			//присваиваем максимуму значение а, можно было присвоить и b и c
+	int minim = a;			//присваиваем минимуму значение а, можно было присвоить и b и c
+
+	if ((a == b) && (a == c) && (b == c))				//обрабатываем ситуацию, когда все числа одинаковые
+		cout << "Все числа равны";
+	else
+	{
+		Sravnenie(a, b, c, maxim, minim);				//вызов функции: здесь значок амперсанда не пишем			
+		cout << "Максимальное число= " << maxim 
+			<< "\nМинимальное число= " << minim << endl; 			
+	}
+
+	cin.get();
+	cin.get();
+
+	return 0;
+}
+int Sravnenie(int chislo1, int chislo2, int chislo3, int& max, int& min)		//указываем, что переменные максимальный и минимальный передаются по ссылке
+{
+
+	if (chislo2 > max)
+		max = chislo2;
+	if (chislo3 > max)
+		max = chislo3;
+
+	if (chislo2 < min)
+		min = chislo2;
+	if (chislo3 < min)
+		min = chislo3;
+
+	return 0;
+}
