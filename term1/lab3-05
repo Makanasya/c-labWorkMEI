@@ -1,0 +1,32 @@
+/*5.	Написать программу, которая вводит с клавиатуры три целых числа и записывает в логическую переменную значение true,
+если среди введенных есть хотя бы одно отрицательное.*/
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a, b, c;
+	bool x = false;						//первоначально логическая переменная 0 (false)
+
+	cout << "Введите три числа\n";
+	cout << "Введите первое число\n";
+	cin >> a;
+	cout << "Введите второе число\n";
+	cin >> b;
+	cout << "Введите третье число\n";
+	cin >> c;
+
+	if ((a < 0)|| (b < 0)||(c < 0))
+		x = true;						
+	else x = false;
+		
+	cout << std::boolalpha << x;		//boolalpha печатает логическую переменную в формате "FALSE/TRUE"
+
+	cin.get();
+	cin.get();
+
+	return 0;
+}
