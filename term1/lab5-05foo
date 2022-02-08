@@ -1,0 +1,39 @@
+/*Задача 5.	Напишите функцию, которая вычисляет наименьшее общее кратное двух чисел.
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+int smallKrat(int, int);			//прототип функции наибольшего общего делителя
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a, b;
+		
+	cout << "Введите два числа" << endl;
+	cin >> a >> b;
+	if ((a == 0) || (b == 0))
+		cout << "Ошибка. Одно из чисел = 0";
+	else {
+		cout << "Наименьшее общее кратное = " << smallKrat(a, b) << endl;			//в функцию передаем числа по значению, функция возвращает наименьшее общее кратное
+	}
+	cin.get();
+	cin.get();
+
+	return 0;
+}
+int smallKrat(int chislo1, int chislo2)
+{
+	int bigDelit = 1;
+	int smallkrat;
+	for (int i = 1; ((chislo1 / i != 0) && (chislo2 / i != 0)); i++)		//цикл выполняется пока при делении на счетчик введенных чисел результат не станет 0
+	{
+		if ((chislo1 % i == 0) && (chislo2 % i == 0))							//если оба числа делятся на счетчик без остатка, 
+			bigDelit = i;											//то наибольший делитель приравнивается к екущему значению счетчика
+	}
+	smallkrat = chislo1 * chislo2 / bigDelit;
+	return smallkrat;														//функция возвращает значение наибольшего делителя
+}
