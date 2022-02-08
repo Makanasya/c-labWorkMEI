@@ -1,0 +1,44 @@
+/*Задача 2.	Напишите процедуру, которая выводит на экран в столбик все цифры переданного ей числа, начиная с первой. 
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+void stolbik(int);
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a;
+	cout<<"Введите число"<<endl;
+	cin>>a;
+
+	stolbik(a);
+
+	cin.get();
+	cin.get();
+return 0;
+}
+void stolbik(int chislo)
+{
+	int razryad;
+	int temp=chislo;
+
+	for (razryad=1; temp/razryad!=0;razryad++)		//Определяем разрядность числа: временную переменную при каждом прохождении цикла делим на 10, при этом увеличиваем разрядность на 1, изначально разрядность =1
+	{
+		temp/=10;									
+	}
+	cout<<"\n\n\n\nЦифры в столбик"<<endl;
+	
+	for (int i=(razryad-1); i>=0;i--)				//Цикл выполняется до того момента пока (разряд-1) >=0
+	{
+		int stepen=pow(10.0,i);						//вводим новую переменную для вычисления степени 10
+		cout<<(chislo/stepen)<<endl;				//выводит первую цифру=число/на степень 10
+		
+		chislo%=stepen;								//сохраняет в переменной число остаток от деления числа на степень 10
+		
+	}
+	
+}
