@@ -1,0 +1,38 @@
+/*Задача 4.	Напишите процедуру, которая принимает параметр – натуральное число N – и выводит на  экран линию из N символов '–'.
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+void strochka(int);
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int n;
+	cout<<"Введите число"<<endl;
+	cin>>n;
+	
+	if (n<0)
+		cout<<"Ошибка ввода"<<endl;
+	else 
+	{strochka(n);
+
+	cin.get();
+	cin.get();
+	}
+return 0;
+}
+void strochka(int chislo)
+{
+	
+	cout<<"\n\n\n\nЛиния из n символов\n"<<endl;
+	
+	for (int i=1;i<=chislo;i++)				//Цикл перебирает все числа от 1 до введенного числа
+	{
+		cout<<"–";						
+	}
+	
+}
