@@ -1,0 +1,35 @@
+/*Задача 7.	Напишите функцию, которая вычисляет факториал натурального числа N.
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+int Faktorial(double);			//прототип функции 
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	double a;
+		
+	cout << "Введите число" << endl;
+	cin >> a;
+	if (a == 0)
+		cout << "Факториал 0!=1";
+	else {
+		cout << "Факториал числа\n" <<a<<"! = "<< Faktorial(a) << endl;			
+	}
+	cin.get();
+	cin.get();
+
+	return 0;
+}
+int Faktorial(double chislo1)
+{
+	double faktorial = 1;
+	for (int i = 1; i <= chislo1; i++)
+		faktorial *=i;
+	
+	return faktorial;														//функция возвращает значение факториала
+}
