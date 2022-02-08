@@ -1,0 +1,35 @@
+/*Задача 3.	Напишите процедуру, которая выводит на экран все делители переданного ей числа (в одну  строчку). 
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+void strochka(int);
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a;
+	cout<<"Введите число"<<endl;
+	cin>>a;
+
+	strochka(a);
+
+	cin.get();
+	cin.get();
+return 0;
+}
+void strochka(int chislo)
+{
+	
+	cout<<"\n\n\n\nДелители в строчку"<<endl;
+	
+	for (int i=1;i<=chislo;i++)				//Цикл перебирает все числа от 1 до введенного числа
+	{
+		if (chislo%i==0)
+		cout<<i<<" ";						
+	}
+	
+}
