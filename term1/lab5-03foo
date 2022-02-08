@@ -1,0 +1,40 @@
+/*Задача 3.	Напишите функцию, которая вычисляет количество цифр числа.
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+int KolCifr(int);
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a = 0;
+
+	cout << "Введите число" << endl;
+	cin >> a;
+
+	cout << "\nКоличество цифр в введенном числе = " << KolCifr(a);
+
+	cin.get();
+	cin.get();
+	return 0;
+}
+int KolCifr(int chislo)
+{
+	int kolcifr = 0;
+	int stepen10 = 1;
+
+	if (chislo == 0)
+		return kolcifr = 1;
+	else {
+		while (chislo / stepen10 != 0)		//пока число деленное на текущую степень 10 не будет равняться 0 (сначала разделит на 1, потом на 10, потом на 100...)
+	{
+		stepen10 *= 10;			//текущая степень 10
+		kolcifr++;
+	}
+	return kolcifr;
+	}
+}
