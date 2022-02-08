@@ -1,0 +1,52 @@
+/*	11.	Решить задачу 10 с помощью оператора выбора. (задача 10.Написать программу, которая вводит номер месяца и выводит название времени года. Не использовать оператор выбора.
+При вводе неверного номера месяца нужно вывести сообщение об ошибке).
+ */
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a;
+
+	cout << "Введите число\n";
+	cin >> a;
+	if ((a < 0) || (a > 12))
+		cout << "Ошибка";
+	else {
+		switch (a)
+		{
+		case 1: 
+		case 2: 
+		case 12: 
+			cout << "Зима";
+			break;
+
+		case 3: 
+		case 4: 
+		case 5: 
+			cout << "Весна";
+			break;
+
+		case 6: 
+		case 7: 
+		case 8: 
+			cout << "Лето";
+			break;
+
+		case 9: 
+		case 10: 
+		case 11: 
+			cout << "Осень";
+			break;
+		}
+	}
+
+
+	cin.get();
+	cin.get();
+
+	return 0;
+}
