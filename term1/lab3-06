@@ -1,0 +1,34 @@
+/*6.	Написать программу, которая вводит с клавиатуры 3 целых числа и записывает в логическую переменную значение  true, 
+если все эти числа двузначные. */
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	
+	int a,b,c; 
+	bool x=false;
+		
+	cout<<"Введите три числа\n";
+	cout<<"Введите первое число\n";
+	cin>>a;
+	cout<<"Введите второе число\n";
+	cin>>b;
+	cout<<"Введите третье число\n";
+	cin>>c;
+	
+	if (a/10!=0&&b/10!=0&&c/10!=0) 
+			x=true;
+	
+
+	else x=false;
+	
+	cout<<std::boolalpha<<x;
+	
+	cin.get();
+	cin.get();
+	
+	return 0;
+}
