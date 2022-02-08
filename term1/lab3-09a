@@ -1,0 +1,33 @@
+/*9.	Написать программы, проверяющие истинность следующих условий:
+a.	значения х и у имеют противоположные знаки (одно- положительное, другое -отрицательное);
+
+ */
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	
+	int a,b; 
+	bool z;
+			
+	cout<<"Введите три числа\n";
+	cout<<"Введите первое число\n";
+	cin>>a;
+	cout<<"Введите второе число\n";
+	cin>>b;
+	
+	
+	if ( ((a>=0) && (b<0)) || ((a<0) && (b>=0)) ) 
+			z=true;
+	else z=false;
+	
+	cout<<std::boolalpha<<z;
+	
+	cin.get();
+	cin.get();
+	
+	return 0;
+}
