@@ -1,0 +1,40 @@
+/*Задача 1	Напишите процедуру, которая выводит на экран в столбик все цифры переданного ей числа, начиная с последней. 
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+void stolbik(int);
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int a;
+	cout<<"Введите число"<<endl;
+	cin>>a;
+
+	stolbik(a);
+
+	cin.get();
+	cin.get();
+return 0;
+}
+void stolbik(int chislo)
+{
+	int i=10;
+	cout<<"\n\n\n\nЦифры в столбик"<<endl;
+	
+	if (chislo/i==0)
+			cout<<chislo%i<<endl;
+
+	for (i=10; (chislo/i)!=0;)
+	{
+		cout<<chislo%i<<endl;
+		chislo/=i;
+		if (chislo/i==0)
+			cout<<chislo%i<<endl;
+	}
+
+}
