@@ -1,0 +1,45 @@
+/*Задача 6.	Напишите  процедуру,  которая  определяет,  верно  ли,  что  переданное  ей  число  –  простое. (Используйте изменяемые параметры).
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+void proverkaProst(int,bool&);			//прототип функции с передачей по ссылке
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	bool prostoe=0;
+	int n;
+	cout<<"Введите число"<<endl;
+	cin>>n;
+	
+	if (n<0)
+		cout<<"Ошибка ввода"<<endl;
+	else 
+	{
+	proverkaProst(n, prostoe);			//вызов функции: здесь значок амперсанда не пишем 
+
+	if (prostoe==1)
+		cout<<"Число не является простым"<<endl;
+	if (prostoe==0) 
+		cout<<"Число простое"<<endl;
+	cin.get();
+	cin.get();
+	}
+return 0;
+}
+void proverkaProst(int chislo, bool &pr) //указываем, что переменная передается по ссылке
+{
+	
+	cout<<"\n\n\n\nПроведена проверка наличия делителей\n"<<endl;
+	
+	for (int i=2;i<chislo;i++)				
+	{		
+		if (chislo%i==0)
+			pr=1;				//у числа есть делители
+	}
+	
+}
