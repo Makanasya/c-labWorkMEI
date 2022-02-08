@@ -1,0 +1,42 @@
+/*Задача 5.	Напишите процедуру, которая принимает параметр – натуральное число N – и выводит на  экран квадрат из звездочек со стороной N.
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+void kvadrat(int);
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int n;
+	cout<<"Введите число"<<endl;
+	cin>>n;
+	
+	if (n<0)
+		cout<<"Ошибка ввода"<<endl;
+	else 
+	{kvadrat(n);
+
+	cin.get();
+	cin.get();
+	}
+return 0;
+}
+void kvadrat(int chislo)
+{
+	
+	cout<<"\n\n\n\nЛиния из n символов\n"<<endl;
+	
+	for (int i=1;i<=chislo;i++)				
+	{
+		for (int j=1; j<=chislo; j++)
+		{
+		cout<<"* ";
+		}
+		cout<<endl;
+	}
+	
+}
