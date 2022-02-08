@@ -1,0 +1,41 @@
+/*Задача 10	Напишите программу, которая вводит натуральное число N и определяет его факториал, то есть произведение натуральных чисел от 1 до N : N !?=?1•2•{...}• N .
+Входные данные
+Входная строка содержит одно натуральное число N .
+Выходные данные
+Программа должна вывести одно число – факториал введённого числа N .
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+
+	int n;
+	float proiz;
+
+	cout << "Введите число\n";
+	cin >> n;
+	proiz = 1;
+	if (n <= 0)
+		cout << "Ошибка";
+	else {
+		cout << "Расчет: ";
+		for (int i = 1; i <= n; i++)
+		{
+			proiz *= i;
+			if (i!=n)
+				cout << i << " * ";
+			else cout<<fixed<<setprecision(0) << i << " = "<<proiz;
+		}
+
+
+		cout << "\nФакториал числа равен " << "    " << proiz;
+	}
+	cin.get();
+	cin.get();
+	return 0;
+}
