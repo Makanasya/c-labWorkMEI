@@ -1,0 +1,41 @@
+/*01. Напишите программу, которая заменяет в символьной строке все буквы c на буквы v (латинские, строчные).
+
+Входные данные
+Входная строка содержит символы латинского алфавита, как строчные, так и заглавные.
+Выходные данные
+Программа должна заменить во всей строке строчные буквы a на буквы b и вывести в первой строке получившуюся символьную строку, а во второй – количество выполненных замен.
+*/
+
+#include <iostream>
+#include <string>
+
+int main ()
+{
+	setlocale (LC_ALL,"Rus");
+	using namespace std;
+	string str;
+	
+	cout<<"введите строчку"<<endl;
+	cin>>str;
+	cout<<endl;
+	int length=str.length();
+	for (int i=0; i<length; i++)
+	{
+		if (str[i]=='c')
+		str[i]='v';
+	}
+	int kolvozamen=0;
+	for (int i=0; i<length; i++)
+	{
+		if (str[i]=='a')
+		{str[i]='b';
+		kolvozamen+=1;}
+	}
+	
+	cout<<str<<endl<<"выполнено замен "<<kolvozamen<<endl;
+
+	cin.get();
+	cin.get();
+
+return 0;
+}
