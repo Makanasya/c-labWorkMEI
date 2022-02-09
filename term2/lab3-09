@@ -1,0 +1,59 @@
+/*Напишите программу, которая сортирует первую половину массива по возрастанию, а вторую – по убыванию. При этом элементы из первой половины не должны перемещаться во вторую и наоборот.
+Входные данные
+Первая строка содержит размер массива N . Во второй строке через пробел задаются N чисел – элементы массива. Гарантируется, что 0 < N ≤ 1000 и N – чётное число.
+Выходные данные
+Программа должна вывести в одной строке элементы все массива, отсортированного нужным образом, разделив их пробелами.
+Примеры
+входные данные
+6
+3 2 1 4 5 6
+выходные данные
+1 2 3 6 5 4
+*/
+
+#include <iostream>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int size = 10;
+	int a = 0, b = 100;
+	srand(time(NULL));
+	int arr[size];
+	//заполнение массива случайными
+	for (int& el : arr)
+	{
+		el = a + rand() % (b - a + 1);
+		cout << setw(4) << el;
+	}
+	cout << endl;
+	int N;
+	if (size % 2 == 0)
+		N = size / 2;
+	else N = size / 2 + 1;
+	
+	for (int i = 0; i < N-1;i++)
+		for (int j = N - 2; j >= i; j--)
+		{
+			if (arr[j] > arr[j + 1])
+				swap(arr[j], arr[j + 1]);
+		}
+	for (int i = N; i < size-1; i++)
+		for (int j = size - 2; j >= i; j--)
+		{
+			if (arr[j] < arr[j + 1])
+				swap(arr[j], arr[j + 1]);
+		}
+
+	for (int& el : arr)
+		cout << setw(4) << el;
+	cout << endl;
+	return 0;
+}
