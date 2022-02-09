@@ -1,0 +1,68 @@
+/*Напишите программу, которая сортирует натуральные числа в массиве по убыванию суммы цифр десятичной записи числа. При равенстве сумм цифр числа должны сохранить исходный порядок.
+Входные данные
+Первая строка содержит размер массива N . Во второй строке через пробел задаются N чисел – элементы массива. Гарантируется, что 0 < N ≤ 1000 .
+Выходные данные
+Программа должна вывести в одной строке элементы массива, отсортированного в порядке убыванию суммы цифр десятичной записи числа, разделив их пробелами.
+Примеры
+входные данные
+6
+8 22 32 55 80 11
+выходные данные
+55 8 80 32 22 11
+*/
+
+#include <iostream>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int SummaCif(int chislo)
+{
+	int sum = 0;
+	int i = 0;
+	while (i!=1)
+	{
+		sum += chislo % 10;
+		if ((chislo / 10 == 0) && (chislo % 10 == 0))
+			i = 1;
+		chislo /= 10;
+	}
+	return sum;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int size = 5;
+	int a = 0, b = 100;
+	srand(time(NULL));
+	int arr[size];
+	//заполнение массива случайными
+	for (int& el : arr)
+	{
+		el = a + rand() % (b - a + 1);
+		cout << setw(4) << el;
+	}
+	cout << endl;
+
+	
+	for (int i = 1; i < size; i++)
+	{
+	for (int j = i; (j > 0) && (SummaCif(arr[j - 1] ) < SummaCif(arr[j]) ) ; j--)
+		{
+			int temp = arr[j - 1];
+			arr[j - 1] = arr[j];
+			arr[j] = temp;
+		}
+
+	}
+	for (int el : arr)
+		cout << setw(4) << el;
+	cout << endl;
+
+	return 0;
+}
