@@ -1,0 +1,33 @@
+/*17. Написать функцию, которая принимает символьную строку s и удаляет из нее все двойные пробелы, оставляя одинарные.
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+using namespace std;
+string DelProbel(string str) 
+{
+	int size = str.size();
+	for (int find = 0; find < size;){
+		find = str.find("  ", find);
+		if (find != (std::string::npos))
+			str.erase(find,1);
+		else find = size;
+	}
+	return str;
+}
+
+int main() 
+{
+	
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+	string str="         Написать  функцию,       которая        принимает символьную строку s и удаляет из нее  все двойные пробелы, оставляя одинарные.       ";
+	cout << str << endl << "Прежний размер строки был= " << str.size()<<endl<<endl;
+	str=DelProbel(str);
+	cout << str<<endl;
+	cout << "После удаления двойных пробелов новый размер строки=  " << str.size()<<endl<<endl;
+	return 0;
+}

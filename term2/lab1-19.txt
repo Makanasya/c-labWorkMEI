@@ -1,0 +1,69 @@
+/*19. Написать функцию, которая переводит число из двоичной системы счисления  в десятичную. Исходное число записано в виде символьной строки.
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <cmath>
+using namespace std;
+
+double PreobvChislo(string str)
+{
+	int size = str.size();
+	double chislo = 0;
+	
+	//проверяем корректность введенного числа для целей обработки
+
+	int find = str.find_first_not_of("01");
+	if (find != std::string::npos)
+	{
+		cout << "В числе есть посторонние символы. Возможно введено нецелое число или число со знаком. Данная функция для подобных чисел не предназначена";
+		return chislo = -2;
+	}
+	
+	//убрать нули из начала числа
+	for (int i = 0; str[i] == '0'; )
+		str.erase(i, 1);
+	
+	//проверяем не является ли число слишком большим для обработки
+	size = str.size();
+	if (str.size() > 19)
+		return chislo=-1;
+
+	string str1 = str;
+
+	//переворачиваем первоначальное число для удобства
+	for (int i = 0, j = size - 1; i < size; i++, j--)
+		str1[i] = str[j];
+
+	//каждую цифру переводим в десятичную систему и записываем как слагаемое числа дабл
+	for (int i = 0; i < size; i++){
+		int cifra = 0;
+		if (str1[i] == '1')
+			cifra = 1;
+		if (str1[i] == '0')
+			cifra = 0;
+		chislo += cifra * pow(2, i);
+	}
+
+	return chislo;
+}
+
+int main() 
+{
+	
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+	string str = "00001b1111111111111111111";
+	
+	double chislo = PreobvChislo(str);
+	if (chislo >= 0)
+		{
+		cout << str << endl;
+		cout << chislo;
+	}
+	if (chislo ==-1) cout << "Слишком большое число. Должно быть не более 19 знаков" << endl;
+	return 0;
+}

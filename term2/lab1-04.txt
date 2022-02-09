@@ -1,0 +1,37 @@
+/*04. Напишите программу, которая выводит первое слово переданной её символьной строки. Слово – это последовательность непробельных символов, ограниченная пробелами или концами строки.
+Входные данные
+Входная строка содержит произвольную последовательность символов.
+Выходные данные
+Программа должна вывести первое слово этой строки.
+
+
+*/
+
+#include <iostream>
+#include <string>
+
+int main ()
+{
+	setlocale (LC_ALL,"Rus");
+	using namespace std;
+	string str;
+	
+	cout<<"введите строчку"<<endl;
+	
+	getline (cin,str);
+	cout<<endl;
+	int length=str.length();
+	int lengthslova=0;
+	int i;
+	for (i=0; (str[i]!=' ')&&(str[i]!='\n')&&(i<=length); i++)
+	{lengthslova+=1;
+
+	}
+	
+	cout<<str.substr(0, lengthslova)<<endl;
+
+	cin.get();
+	cin.get();
+
+return 0;
+}

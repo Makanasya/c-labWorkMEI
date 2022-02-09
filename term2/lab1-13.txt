@@ -1,0 +1,45 @@
+/*13. Напишите программу, которая заменяет в символьной строке все вхождения одной подстроки на другую. Используйте процедуру.
+
+Входные данные
+Первая входная строка содержит символьную строку, которую нужно обработать. Во второй и третьей строках записаны соответственно подстрока-образец (которую нужно менять) и подстрока-замена.
+Выходные данные
+Программа должна вывести обработанную символьную строку, в которой все вхождения подстроки-образца заменены на подстроку-замену.
+
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+using namespace std;
+string Menyay(string str, string strobraz, string strzam) {
+	int size = str.size();
+	int pos1=0;
+	for (int i=0; i<size ;i++) {
+		pos1 = str.find(strobraz);				//ищет позицию строки-образца
+		if (pos1 != std::string::npos)
+		{
+			
+			int sizeobraz = strobraz.size();
+			str.replace(pos1, sizeobraz, strzam);
+			size = str.size();
+		}
+	}
+	return str;
+}
+int main() 
+{
+	
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	string str, strobraz,strzam;
+	str = "сделать из муха слон";
+	strobraz = "муха";
+	strzam = "слон";
+	//getline(cin, str);			//можно сделать ручной ввод
+	cout << "Первоначальная строка: \n" << str << endl << "\n\nПосле замены получилось" << endl;
+	str=Menyay(str, strobraz, strzam);
+	
+	cout  << str<<endl<<endl;
+	return 0;
+}

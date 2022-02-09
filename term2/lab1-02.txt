@@ -1,0 +1,41 @@
+/*02. Напишите программу, которая заменяет в символьной строке все буквы c на буквы z , a буквы C на буквы Z .
+
+Входные данные
+Входная строка содержит символы латинского алфавита, как строчные, так и заглавные.
+Выходные данные
+Программа должна вывести в первой строке получившуюся в результате обработки символьную строку, а во второй – количество выполненных замен.
+
+*/
+
+#include <iostream>
+#include <string>
+
+int main ()
+{
+	setlocale (LC_ALL,"Rus");
+	using namespace std;
+	string str;
+	
+	cout<<"введите строчку"<<endl;
+	cin>>str;
+	cout<<endl;
+	int length=str.length();
+	int kolvozamen=0;
+	for (int i=0; i<length; i++)
+	{
+		if (str[i]=='c')
+		{str[i]='z';
+		kolvozamen+=1;}
+		if (str[i]=='C')
+		{str[i]='Z';
+		kolvozamen+=1;}
+	}
+	
+	
+	cout<<str<<endl<<"выполнено замен "<<kolvozamen<<endl;
+
+	cin.get();
+	cin.get();
+
+return 0;
+}

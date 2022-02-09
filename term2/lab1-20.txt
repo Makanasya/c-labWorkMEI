@@ -1,0 +1,80 @@
+/*20. Написать логическую функцию, которая возвращает true, если переданная её символьная запись даты  - правильная, и false – если нет. 09.12.2009 – правильная, 33.22.2008 – нет, 02.3.18.19 – нет….
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <cmath>
+using namespace std;
+
+bool CorrectDate(string str) 
+{
+	bool vyvod=0;
+	int day=0, month=0, year=0;
+	int tochka1 = str.find('.');
+	int tochka2 = str.rfind('.');
+	int oshibtochka = str.find('.', tochka1+1);
+	
+	//Проверяем на наличие лишних или недостающих точек
+	if ((tochka1 == tochka2) || (oshibtochka != tochka2))
+		return vyvod = 0;
+
+	//проверка на наличие некорректных знаков
+	if(str.find_first_not_of("0123456789.")!=std::string::npos)
+		return vyvod = 0;
+
+	//Делим строку на день, месяц, год. Записываем в строки
+	string years = str.substr(tochka2+1);
+	string monthes = str.substr(tochka1+1, tochka2 - tochka1-1);
+	string days = str.erase(tochka1);
+		
+	//переводим тип строки в тип int
+	day = stoi(days);
+	month = stoi(monthes);
+	year = stoi(years);
+	//cout << day << endl << month << endl << year << endl;
+
+	//Проверяем корректность месяца
+	if ((month < 0) || (month > 12))
+		return vyvod = 0;
+
+	//Проверяем корректность дня
+	if ((day < 0) || (day > 31))
+		return vyvod = 0;
+	//Проверяем соответствие дня месяцу
+	if ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12))
+	{
+		if (day > 31)
+			return vyvod = 0;
+	}
+	if ((month == 4) || (month == 6) || (month == 9) || (month == 11) )
+	{
+		if (day > 30)
+			return vyvod = 0;
+	}
+	if (month == 2)
+	{
+		if ((year % 4 == 0) && (day > 29))
+			return vyvod = 0;
+		if ((year % 4 != 0) && (day > 28))
+			return vyvod = 0;
+	}
+
+	return vyvod=1;
+}
+
+int main() 
+{
+	
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+	string date = "29.02.2020";
+	bool CorDate = CorrectDate(date);
+	if (CorDate)
+		cout << "TRUE" << endl;
+	else cout << "FALSE" << endl;
+
+	return 0;
+}

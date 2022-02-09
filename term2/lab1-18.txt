@@ -1,0 +1,34 @@
+/*18. Написать функцию, которая принимает символьную строку s и удаляет из нее все пробелы в начале и в конце строки.
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+using namespace std;
+string DelProbel(string str) 
+{
+	int size = str.size();
+	for (int i = 0; str[i]==' '; ) 
+	{
+		str.erase(i, 1);
+	}
+	size = str.size();
+	for (int i = size - 1; str[i] == ' '; i--)
+		str.erase(i, 1);
+	return str;
+}
+
+int main() 
+{
+	
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+	string str="          Написать функцию, которая принимает      символьную строку s и удаляет из нее все пробелы в начале и в конце строки.          ";
+	cout << str << endl << "Прежний размер строки был= " << str.size()<<endl<<endl;
+	str=DelProbel(str);
+	cout << str<<endl;
+	cout << "После удаления пробелов  в начале и в конце строки новый размер строки=  " << str.size()<<endl<<endl;
+	return 0;
+}

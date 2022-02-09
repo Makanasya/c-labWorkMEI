@@ -1,0 +1,83 @@
+/*21. Написать функцию, которая вычисляет арифметическое выражение, состоящее из натуральных чисел и знаков + и -, записанное в виде символьной строки «100-45+5-2+99». 
+Предусмотреть обработку ошибок.
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <cmath>
+using namespace std;
+
+int Calculate(string str)
+{
+	int result=0;
+	int size = str.size();
+
+	//Проверка есть ли в строке цифры
+	if (str.find_first_of("0123456789") == std::string::npos)
+	{
+		cout << "Ошибка 3: Строка пустая или в строка не содержит цифр" << endl;
+		return -3;
+	}
+
+	//Проверка на корректность символов в строке
+	if (str.find_first_not_of("0123456789+-") != std::string::npos)
+	{
+			cout << "Ошибка 1: некорректный символ в строке" << endl;
+			return -1;
+	}
+
+	for (int i=0; i<size; i++)
+		if (i != size - 1)
+		{
+			if ((str.find("++")!=std::string::npos)||(str.find("--") != std::string::npos) || (str.find("-+") != std::string::npos) || (str.find("+-") != std::string::npos))
+			{
+				cout << "Ошибка 2: некорректное сочетание символов в строке" << endl;
+				return -2;
+			}
+		}
+	
+	
+	//Внешний цикл с первого символа до последнего, внутренний разбивает на числа, потом во внешнем цикле эти числа преобразуются в тип int и производятся вычисления
+	int sizeWord=0;
+	
+	for (int i= 0; i < size; i+=sizeWord)
+	{
+		string word;
+		int chislo = 0;
+				
+		for (int j = i; (str[j]!='-')&&(str[j]!='+')&&(j<size); j++)
+		{
+			word.push_back(str[j]);
+		}
+		sizeWord= word.size()+1;
+		if (word!="")
+			chislo = stoi(word);
+		
+		if ((i==1)&& (str[0] == '-'))
+			result -= chislo;
+		if ((i==0)||(i == 1) && (str[0] != '-'))
+			result += chislo;
+
+		if ((i!=1)&&(i!=0)&&(str[i-1]!='-'))
+			result += chislo;
+		if ((i != 1) && (i != 0) && (str[i-1] == '-'))
+			result -= chislo;
+
+	}
+
+	return result;
+}
+
+int main() 
+{
+	
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+	string str = "100-45+5-2+99";
+	cout <<str<<" = "<< Calculate(str) <<endl;
+	
+
+	return 0;
+}

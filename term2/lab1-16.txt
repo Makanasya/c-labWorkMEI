@@ -1,0 +1,89 @@
+/*16. Напишите процедуру, которая принимает длинный текст text и ширину поля вывода width и выводит текст в поле этой ширины. 
+Если очередное слово не помещается в границы поля, то оно переносится на следующую строку.
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+using namespace std;
+void word(string str, int width) 
+{
+	int i = 0;
+	int size = str.size();
+	bool bigWord = 1;
+	
+	//Проверка всех слов текста: есть ли среди них такое, что оно превышает область печати
+	
+	for (int j = i; j < size;j=i) {
+		string word;
+		for (; (str[i] != ' ') && (i < size); i++) {			//i это порядковый номер символа во всем тексте
+			word.push_back(str[i]);
+		}
+
+		int wordsize = word.size();
+		i++;
+		if (wordsize >= width)
+		{
+			std::cout << "Введите большую ширину. Одно из слов слишком большое" << endl;
+			bigWord = 0;
+			j = size;
+		}
+	}
+	
+	//если слишком длинных слов нет, приступаем к печати
+
+	if (bigWord != 0)
+	{
+		int i = 0;
+		int size = str.size();
+		
+		for (int j = 0; j < size;) {			//j это текущее положение на строке
+			string word;
+			for (; (str[i] != ' ')&&(i<size); i++) {			//i это порядковый номер символа во всем тексте
+				word.push_back(str[i]);
+			}
+
+			int wordsize = word.size();
+
+			if ((j + wordsize) / width == 0)
+			{
+				cout << word << ' ';
+				i++;
+				j += wordsize;
+			}
+			else
+			{
+				if (i != size)
+				{
+					cout << endl << word<<' ';
+					j = 0;
+					i++;
+				}
+				if (i >= size)
+				{
+					cout << word;
+					j = size;
+				}
+			}
+		}
+	}
+	
+}
+
+int main() 
+{
+	
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+	string text, str;
+	text = "Напишите процедуру, которая принимает длинный текст text и ширину поля вывода width и выводит текст в поле этой ширины.";
+	int width = 15;
+	//getline(cin, str);			//можно сделать ручной ввод
+	
+	cout <<  text << endl <<endl;
+	word (text, width);
+	
+	return 0;
+}
