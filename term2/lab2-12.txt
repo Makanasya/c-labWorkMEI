@@ -1,0 +1,43 @@
+/*12. Напишите программу, которая находит в массиве количество элементов, равных заданному значению X .
+Примеры
+входные данные
+6
+1 2 3 2 3 3
+2
+выходные данные
+2
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N = 10;
+	int a = 0, b = 10;
+	int X = 8;					//заданное значение Х
+	int kolvoX = 0;
+
+	srand(time(NULL));
+
+
+	int array [N];
+	cout << "X равен " << X << endl<< "Массив состоит из следующих элементов:"<<endl;
+	for (int i = 0; i < N; i++)
+	{
+		array[i] = a + rand() % (b-a+1);
+		if (array[i] == X)
+			kolvoX++;
+		cout <<setw(4)<< array[i];
+	}
+	cout << "\nКоличество равных " << X << " элементов = " << kolvoX << endl;
+	return 0;
+}

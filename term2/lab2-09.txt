@@ -1,0 +1,60 @@
+/*9. Напишите программу, которая заполняет массив из N элементов случайными целыми числами в диапазоне [ A , B ] и определяет максимальный среди чётных положительных элементов этого массива. 
+Если в массиве нет таких элементов, программа должна вывести число -1.
+Примеры
+входные данные
+0 100 10
+выходные данные
+0 3 86 20 27 67 32 16 37 42
+86
+входные данные
+-20 0 10
+выходные данные
+-20 -20 -2 -16 -15 -6 -14 -17 -13 -12
+-1
+
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main() 
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int N=10;
+	int a = -10, b = 10;
+	int max= 0;
+	int kolvoChet = 0;
+	//cin>>N;
+	cout << endl;
+	srand(time(NULL));
+	
+	
+	int * array = new int [N];
+	
+	for (int i = 0; i <N; i++)			
+	{
+		array[i] = a + rand() % (b - a + 1);
+		
+		if ((array[i] % 2 == 0)&&(array[i]>=0))
+		{
+			kolvoChet++;
+			if (array[i] > max) 
+				max = array[i];
+		}
+		cout <<setw(5)<< array[i];
+		if ((i + 1) % 10 == 0)
+			cout << endl;
+	}
+	if (kolvoChet == 0)
+		max = -1;
+	cout <<endl<<max<< endl;
+	delete [] array;
+	return 0;
+}

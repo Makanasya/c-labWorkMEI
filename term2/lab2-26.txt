@@ -1,0 +1,96 @@
+/*26. Напишите программу, которая выбирает из массива все простые числа в другой массив. Если в исходном массиве нет простых чисел, программа должна вывести число 0.
+Входные данные
+Первая строка содержит размер массива N . Во второй строке через пробел задаются N чисел – элементы массива. Гарантируется, что 0 < N ≤ 10000 .
+Выходные данные
+Программа должна вывести в одну строчку все элементы построенного массива, разделив их пробелами. Если ни одного подходящего элемента в массиве не было, программа должна вывести число 0.
+Примеры
+входные данные
+6
+1 2 3 4 5 6
+выходные данные
+ 2 3 5
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+bool chisloProstoe(int element) 
+{
+	if (element < 2)					//числа 0 и 1 не являются простыми
+		return 0;
+	for (int i = 2; i < element; i++)
+	{
+		if (element % i == 0)
+			return 0;
+	}
+	return 1;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N = 10;
+	int a = 0, b = 100;
+	srand(time(NULL));
+	int arr[N];
+	int sizenew = N;
+	int *arrtemp=new int[sizenew];			//на этапе компиляции не знаем какой размер массива будет, поэтому новый массив динамический
+	int kolvoProstih = 0;
+
+	cout << endl << "Массив состоит из следующих элементов:" << endl;
+	for (int& el : arr)
+	{
+		el = a + rand() % (b - a + 1);
+		cout << setw(4) << el;
+		
+	}
+	
+	//заполняем новый массив простыми числами
+	
+	for (int i = 0, j = 0; i < N; i++)
+	{
+		if (chisloProstoe(arr[i]))
+		{
+			arrtemp[j] = arr[i];
+			j++;
+			kolvoProstih++;
+		}
+	}
+	sizenew = kolvoProstih;					//у нового массива теперь размер = количеству простых чисел (с повторами)
+
+												
+	//Убираем из нового массива все повторные элементы
+	if (kolvoProstih!=0)
+	{
+		for (int i = 0; i < sizenew - 1; i++)
+		{
+			for (int j = i + 1; j < sizenew; j++)
+			{
+				if (arrtemp[i] == arrtemp[j])				//если встретили повтор, то сдвигаем все элементы влево, при этом уменьшаем размер массива и уменьшаем индекс элемента, с которым сравниваем
+				{
+					for (int k = j; k < sizenew - 1; k++)
+						arrtemp[k] = arrtemp[k + 1];
+					sizenew--;
+					j--;
+				}
+
+			}
+
+		}
+	
+		cout << endl << "Новый массив:" << endl;
+		for (int i = 0; i < sizenew; i++)
+		{
+		cout << setw(4) << arrtemp[i];
+		}
+	}
+	
+	delete[] arrtemp;					//освобождаем память
+	return 0;

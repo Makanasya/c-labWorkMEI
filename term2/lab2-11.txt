@@ -1,0 +1,71 @@
+/*11. Напишите программу, которая заполняет массив из N элементов случайными целыми числами в диапазоне [ A , B ] и 
+определяет среднее арифметическое всех элементов этого массива, которые меньше 70, и
+среднее арифметическое всех остальных элементов.
+Примеры
+входные данные
+0 100 10
+выходные данные
+0 3 86 20 27 67 32 16 37 42
+22.125 76.500
+входные данные
+-10 40 6
+выходные данные
+-10 -9 33 0 3 24
+6.833 0.000
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main() 
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N=10;					//размер массива
+	int a = 0, b = 100;				//диапазон
+	double msum = 0, bsum=0;		//сумма элементов меньших 70 и сумма элементов больших или= 70 (большая и малая сумма)
+
+	int mkolvo = 0, bkolvo=0;		//количество элементов 
+	double malsrAr = 0.0, bolsrAr = 0;
+	cout << endl;
+	srand(time(NULL));
+	
+	
+	int array [N];
+	for (int i = 0; i < N; i++)
+	{
+		array[i] = a + rand() % (b - a + 1);
+		if (array[i] < 70)
+		{
+			msum += array[i];
+			mkolvo++;
+		}
+		else 
+		{
+			bsum += array[i];
+			bkolvo++;
+		}
+		cout <<setw(4)<< array[i];
+	}
+	cout << endl << endl;
+	if (mkolvo != 0)
+	{
+		malsrAr = msum / mkolvo;
+		cout << malsrAr<< "\t ";
+	}
+	else cout << malsrAr << "\t ";
+	if (bkolvo!=0)
+	{
+		bolsrAr = bsum / bkolvo;
+		cout  << bolsrAr<<endl;
+	}
+	else cout  << bolsrAr<<endl;
+	
+	return 0;
+}

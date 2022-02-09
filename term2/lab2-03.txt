@@ -1,0 +1,30 @@
+/*3.	Напишите программу, которая заполняет массив квадратами натуральных чисел от 1 до N 
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+using namespace std;
+
+int main() 
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int N=100;
+	//cin >>N;								
+	cout << endl;
+	
+	int * array = new int [N];
+	
+	for (int i = 0; i < N; i++)
+	{
+		array[i] = (i + 1)*(i+1);
+		cout <<setw(10)<< array[i];		//отступ=максимальному разряду+1
+		if ((i+1) % 10 == 0)			//печать по 10 элементов массива
+			cout << endl;
+	}
+	cout << endl;
+	delete [] array;
+	return 0;
+}

@@ -1,0 +1,50 @@
+/*7. Напишите программу, которая заполняет массив из N элементов случайными целыми числами в диапазоне [ A , B ] и определяет количество элементов этого массива, 
+у которых вторая цифра в десятичной записи (число десятков) – чётная.
+Примеры
+входные данные
+100 150 5
+выходные данные
+100 101 143 110 113
+3
+
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main() 
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int N=10;
+	int a = 5, b = 100;
+	int kolvoChetDes = 0;
+	//cin>>N;
+	cout << endl;
+	srand(time(NULL));
+	
+	
+	int * array = new int [N];
+	
+	for (int i = 0; i <N; i++)			//N-1 т.к. элементы нумеруются с 0-го, соответственно конец массива это элемент [N-1]
+	{
+		array[i] = a + rand() % (b - a + 1);
+		if (array[i]/10!=0)
+		{
+			if (array[i] % 100 / 10 % 2 == 0)
+			kolvoChetDes++; 
+		}
+		cout <<setw(5)<< array[i];
+		if ((i + 1) % 10 == 0)
+			cout << endl;
+	}
+	cout <<endl<<kolvoChetDes<< endl;
+	delete [] array;
+	return 0;
+}

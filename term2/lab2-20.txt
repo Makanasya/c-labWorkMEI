@@ -1,0 +1,52 @@
+/*20. Напишите программу, которая выполняет "сжатие массива" – переставляет все нулевые элементы в конец массива. При этом все ненулевые элементы располагаются в начале массива в том же порядке.
+Примеры
+входные данные
+6
+1 0 2 0 3 4
+выходные данные
+1 2 3 4 0 0
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N = 10;
+	int a = 0, b = 10;
+	srand(time(NULL));
+	int arr[N], arrtemp[N] = {0};
+	
+
+	cout << endl << "Массив состоит из следующих элементов:" << endl;
+	for (int& el : arr)
+	{
+		el = a + rand() % (b - a + 1);
+		cout << setw(4) << el;
+	}
+
+	//перебор элементов если элемент !=0, то записываем его в новый массив, если элемент =0, то в новом массиве ничего не записываем и на следующий элемент нового массива не переходим
+	for (int i = 0, j = 0; i<N; i++, j++)
+		{
+		if (arr[i]!=0)
+		arrtemp[j] = arr[i];
+		if (arr[i] == 0)
+			j--;
+		}
+	
+	cout << endl << "Новый массив:" << endl;
+	for (int el : arrtemp)
+	{
+		cout << setw(4) << el;
+	}
+
+	return 0;
+}

@@ -1,0 +1,45 @@
+/*16. Напишите программу, которая переставляет соседние элементы массива: 1-й со 2-м, 3-й с 4-м и т.д. Нумерация элементов начинается с единицы. 
+Если в массиве нечётное количество элементов, последний элемент остаётся на своём месте.
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N = 9;
+	int a = -10, b = 10;
+	srand(time(NULL));
+	int arr [N];
+	
+	cout << endl<< "Массив состоит из следующих элементов:"<<endl;
+	for (int &el : arr)
+	{
+		el = a + rand() % (b-a+1);
+		cout <<setw(4)<< el;
+	}
+	
+	if (N!=1)
+		for (int i = 0; i < (N-1); i+=2)
+		{
+			int temp=arr[i];
+			arr[i] = arr[i+1];
+			arr[i+1] = temp;
+			
+		}
+
+	cout << endl << "Новый массив:" << endl;
+	for (int el : arr)
+	{
+		cout << setw(4) << el;
+	}
+	
+	return 0;
+}

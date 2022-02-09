@@ -1,0 +1,38 @@
+/*6.	Напишите программу, которая заполняет массив из N элементов степенями числа 2, начиная с 2^1 до 2^N , в обратном порядке. (Последний элемент должен быть равен 2^1 ).
+Примеры
+входные данные
+4
+выходные данные
+16 8 4 2
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+int main() 
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int N=10;
+	//cin>>N;
+	cout << endl;
+	
+	
+	int * array = new int [N];
+	
+	for (int i = N-1; i >= 0; i--)			//N-1 т.к. элементы нумеруются с 0-го, соответственно конец массива это элемент [N-1]
+	{
+		array[i] = pow(2, i+1);
+		cout <<setw(5)<< array[i];		//отступ=максимальному разряду
+		if (i % 10 == 0)			   //печать по 10 элементов массива
+			cout << endl;
+	}
+	cout << endl;
+	delete [] array;
+	return 0;
+}

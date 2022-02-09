@@ -1,0 +1,51 @@
+/*17. Напишите программу, которая выполняет реверс массива: меняет местами первый и последний элементы, второй и предпоследний и т.д.
+Примеры
+входные данные
+6
+1 2 3 4 5 6
+выходные данные
+6 5 4 3 2 1
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N = 10;
+	int a = -10, b = 10;
+	srand(time(NULL));
+	int arr [N];
+	
+	cout << endl<< "Массив состоит из следующих элементов:"<<endl;
+	for (int &el : arr)
+	{
+		el = a + rand() % (b-a+1);
+		cout <<setw(4)<< el;
+	}
+	
+	if (N!=1)
+		for (int i = 0, j = N-1; i < j; i++, j--)
+		{
+			/*int temp=arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;*/
+			
+			swap(arr[i], arr[j]);
+		}
+
+	cout << endl << "Новый массив:" << endl;
+	for (int el : arr)
+	{
+		cout << setw(4) << el;
+	}
+	
+	return 0;
+}

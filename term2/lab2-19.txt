@@ -1,0 +1,53 @@
+/*19. Напишите программу, которая выполняет циклический сдвиг элементов массива влево на R элементов.
+Примеры
+входные данные
+6
+1 2 3 4 5 6
+2
+выходные данные
+3 4 5 6 1 2
+
+*/
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N = 10;
+	int a = -10, b = 10;
+	srand(time(NULL));
+	int arr[N], arrtemp[N] = {0};
+	int R = 2;				//R-на столько элементов будет сдвиг
+
+	cout << endl << "Массив состоит из следующих элементов:" << endl;
+	for (int& el : arr)
+	{
+		el = a + rand() % (b - a + 1);
+		cout << setw(4) << el;
+	}
+
+	for (int i = R, j = 0; i<N; i++, j++)
+		{
+		arrtemp[j] = arr[i];
+		}
+	for (int i = 0, j = N - R; j<N; i++, j++)
+	{
+		arrtemp[j] = arr[i];
+	}
+	
+	cout << endl << "Новый массив:" << endl;
+	for (int el : arrtemp)
+	{
+		cout << setw(4) << el;
+	}
+
+	return 0;
+}
