@@ -1,0 +1,50 @@
+#include <iostream>
+#include <windows.h>
+#include <iomanip>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int N = 3;
+	const int M = 6;
+	int a = 0, b = 10;
+	srand(time(NULL));
+	int arr[N][M];
+	int max;
+	cout << N << ' ' << M << endl;
+	//заполнение массива случайными
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			arr[i][j] = a + rand() % (b - a + 1);
+			cout << setw(4) << arr[i][j];
+		}
+		cout << endl;
+	}
+	max = arr[0][0];
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			if (max<arr[i][j])
+				max=arr[i][j];
+		}
+	}
+	for (int i=0;i<N;i++)
+		for (int j = 0; j < M; j++)
+		{
+			if (arr[i][j] == max)
+			{
+				cout << endl;
+				for (int i = 0; i < N; i++)
+					cout << setw(4) << arr[i][j];
+			}
+		}
+	return 0;
